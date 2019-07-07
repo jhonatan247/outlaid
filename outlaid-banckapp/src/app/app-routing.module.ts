@@ -1,20 +1,20 @@
+import { ComparationComponent } from './pages/comparation/comparation.component';
+import { AnotherUserComponent } from './pages/another-user/another-user.component';
+import { SelectUserComponent } from './pages/select-user/select-user.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { MyBarChartComponent } from './my-bar-chart/my-bar-chart.component';
-import { MyDoughnutChartComponent } from './my-doughnut-chart/my-doughnut-chart.component';
-import { MyRadarChartComponent } from './my-radar-chart/my-radar-chart.component';
-import { MyPieChartComponent } from './my-pie-chart/my-pie-chart.component';
+import { MyBarChartComponent } from './controls/my-bar-chart/my-bar-chart.component';
 
 const routes: Routes = [
-  {path: 'bar-chart', component: MyBarChartComponent},
-  {path: 'doughnut-chart', component: MyDoughnutChartComponent},
-  {path: 'radar-chart', component: MyRadarChartComponent},
-  {path: 'pie-chart', component: MyPieChartComponent},
-  {path: '**', component: MyBarChartComponent}
+  { path: '', component: MyBarChartComponent },
+  { path: 'select-model', component: SelectUserComponent },
+  { path: 'another-user', component: AnotherUserComponent },
+  { path: 'comparation', component: ComparationComponent },
+  { path: '**', component: MyBarChartComponent }
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

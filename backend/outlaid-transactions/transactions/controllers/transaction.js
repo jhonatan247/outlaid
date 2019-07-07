@@ -13,7 +13,6 @@ module.exports.register = (req, res) => {
       })
       .catch(error => res.status(500).json({ message: error.message }));
   } else {
-    console.log(req);
     res.status(400).json({
       success: false,
       message: 'wrong Parameters'

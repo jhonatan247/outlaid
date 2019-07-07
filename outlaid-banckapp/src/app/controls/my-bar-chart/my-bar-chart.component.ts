@@ -1,3 +1,4 @@
+import { TransactionService } from './../../services/transaction/transaction.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -12,25 +13,29 @@ export class MyBarChartComponent implements OnInit {
         {
           ticks: {
             suggestedMin: 50,
-            suggestedMax: 100
+            suggestedMax: 50
           }
         }
       ]
     }
   };
-
-  public barChartLabels = ['January', 'February', 'March', 'April'];
+  public barChartLabels = [
+    'monday',
+    'tuesday',
+    'wednesday',
+    'thursday',
+    'friday',
+    'saturday',
+    'sunday'
+  ];
   public barChartType = 'line';
   public barChartLegend = true;
 
-  public barChartData = [
-    {
-      label: 'First dataset',
-      data: [0, 20, 40, 50]
-    }
-  ];
+  public barChartData = [{ label: '', data: '' }];
 
-  constructor() {}
+  constructor(transactionService: TransactionService) {
+    this.barChartData = transactionService.getTreding();
+  }
 
   ngOnInit() {}
 }
