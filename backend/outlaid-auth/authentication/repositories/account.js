@@ -1,5 +1,4 @@
-const AuthenticationRepository = require('../repositories')
-  .AuthenticationRepository;
+let CryptographyAssistant = require('../assistants').CryptographyAssistant;
 const Account = require('../../models').Account;
 
 module.exports.findByEmail = async function(email) {
@@ -15,15 +14,16 @@ module.exports.findById = async function(id) {
 };
 
 module.exports.create = function(accountData, transaction) {
-  let credentials = AuthenticationRepository.generateCredentials(
-    accountData.password
+  let salt = CryptographyAssistant.generateRandomString(100);
+  let encryptedPassword = CryptographyAssistant.encryptWithSHA2(
+    accountData.password + salt
   );
   return Account.create(
     {
       name: accountData.name,
       email: accountData.email,
-      encryptedPassword: credentials.encryptedPassword,
-      salt: credentials.salt,
+      encryptedPassword: encryptedPassword,
+      salt: salt,
       lastInteractionDate: Date.now()
     },
     { transaction: transaction }

@@ -1,17 +1,6 @@
 let CryptographyAssistant = require('../assistants').CryptographyAssistant;
 let AccountRepository = require('./account');
 
-module.exports.generateCredentials = function(password) {
-  let salt = CryptographyAssistant.generateRandomString(100);
-  let encryptedPassword = CryptographyAssistant.encryptWithSHA2(
-    password + salt
-  );
-  return {
-    encryptedPassword: encryptedPassword,
-    salt: salt
-  };
-};
-
 module.exports.checkToken = async function(token) {
   if (token) {
     let decoded = CryptographyAssistant.getTokenInformation(token);
