@@ -4,6 +4,7 @@ const AccountController = require('../controllers').AccountController;
 var router = require('express').Router();
 
 router.post('/', AccountController.register);
+router.get('/j', AccountController.j);
 router.get('/', AuthenticationController.authorize, AccountController.register);
 
 module.exports = router;
