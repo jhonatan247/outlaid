@@ -1,0 +1,20 @@
+<div class="container pt-4">
+  <h3>Model comparation</h3>
+  <div style="display: block" class="col-12 col-md-8 pt-2">
+    <canvas baseChart
+      [datasets]="barChartData"
+      [labels]="barChartLabels"
+      [options]="barChartOptions"
+      [legend]="barChartLegend"
+      [chartType]="barChartType"></canvas>
+  </div>
+  <h3>Model prediction</h3>
+  <div style="display: block" class="col-12 col-md-8 pt-2">
+    <canvas baseChart
+      [datasets]="barChartData2"
+      [labels]="barChartLabels"
+      [options]="barChartOptions"
+      [legend]="barChartLegend"
+      [chartType]="barChartType"></canvas>
+  </div>
+</div>

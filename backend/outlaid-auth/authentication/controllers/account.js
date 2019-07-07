@@ -1,4 +1,21 @@
 const AccountRepository = require('../repositories').AccountRepository;
+const axios = require('axios');
+
+module.exports.j = (req, res) => {
+  axios
+    .get('http://10.203.150.241:5000/')
+    .then(response => {
+      res.json({
+        data: response.data
+      });
+    })
+    .catch(error => {
+      res.status(400).json({
+        success: false,
+        message: 'wrong Parameters'
+      });
+    });
+};
 
 module.exports.register = (req, res) => {
   if (req.body.email && req.body.password) {
